@@ -1,5 +1,8 @@
 const User = require('../models/User');
 
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
 const { validateUserForSignUp, validateUserForLogin} = require('../validations/Validations');
 
 exports.signUp = async (req, res) => {
@@ -14,6 +17,10 @@ exports.signUp = async (req, res) => {
     // Checking if the userEmail is already exist
     const existedEmail = await User.findOne({ email: req.body.email })
     if (existedEmail) return res.status(400).json({success: false, message: "Email is already in use", email: existedEmail.email });   
+
+     // HASHING PASSWORD
+     const salt = await bcrypt.genSalt(10);
+     const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
     const newUser = new User({
         name: req.body.name,
