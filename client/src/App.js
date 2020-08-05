@@ -7,16 +7,22 @@ import Register from './Pages/Register';
 import Chatroom from './Pages/Chatroom';
 import Dashboard from './Pages/Dashboard';
 
+import store from './store';
+
+import { Provider } from 'react-redux';
+
 function App() {
   return (
     <div className="">
-      <Index />
-      <Switch>
-        <Route path='/dashboard' exact component={ Dashboard } />  
-        <Route path='/chatroom' exact component={ Chatroom } />
-        <Route path='/login' exact component={ Login } />
-        <Route path='/register' exact component={ Register } />
-      </Switch>
+      <Provider store={store}>  
+        <Index />
+        <Switch>
+          <Route path='/dashboard' exact component={ Dashboard } />  
+          <Route path='/chatroom' exact component={ Chatroom } />
+          <Route path='/login' exact component={ Login } />
+          <Route path='/register' exact component={ Register } />
+        </Switch>
+      </Provider>
     </div>
   );
 }

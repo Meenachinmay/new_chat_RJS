@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
 
     const [chatroom, setChatRoom] = useState("");
 
+    const error = useSelector(state => state.errors.message)
+
     const show = () => {
         console.log(chatroom);
+        console.log(error)
     }
+
 
     return (
         <div className="flex-shrink-0 mx-auto w-1/5">

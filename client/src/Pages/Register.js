@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { registerUser } from '../_actions/userActions';
 
 const Register = () => {
 
@@ -7,15 +9,23 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const errorState = useSelector(state => state.errors.message);
+    const authUserEmail = useSelector(state => state.auth.user.email)
+    const dispatch = useDispatch();
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        const dataToSend = {
+        const data = {
             name: name,
             email: email,
             password: password
         }
 
-        console.log(dataToSend);
+        dispatch(registerUser(data));
+
+        console.log(data);
+        console.log(errorState)
+        console.log(authUserEmail)
     }
 
     return (
@@ -26,6 +36,8 @@ const Register = () => {
                         <p className="text-center text-2xl uppercase text-gray-500 mb-5">
                             Sign Up
                         </p>
+                        <div>{errorState}</div>
+                        <div>{authUserEmail}</div>
                         <label className="text-gray-600 text-sm">
                             Name:
                         </label>

@@ -5,9 +5,12 @@ const Database = require('./database/Database');
 const router = require('./routes/routes');
 
 const app = express();
+const cors = require('cors');
 
 Database.Database();
 app.use(express.json({extended: true}));
+
+app.use(cors());
 
 router(app);
 

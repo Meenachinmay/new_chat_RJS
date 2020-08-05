@@ -1,13 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { loginUser } from '../_actions/userActions';
 
 const Login = () => {
 
+    const user = useSelector(state => state.auth);
+
+    const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const show = () => {
-        console.log(email);
+        const data = {
+            email: email,
+            password: password,
+        }
+
+        dispatch(loginUser(data));
+        setTimeout(() => {
+            console.log(errorMessage);
+        }, 1000);
     }
+
+    const errorMessage = useSelector(state => state.errors);
 
     return (
         <div className="flex-shrink-0 mx-auto w-1/5">

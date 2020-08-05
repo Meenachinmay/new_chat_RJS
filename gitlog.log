@@ -1,0 +1,53 @@
+commit 258db438ac0724b5c191785618645bf534c076be
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 13:35:02 2020 +0530
+
+    login and register page design, react router added, navbar added
+
+commit be80459e34d8bea376e4dd7b0fdefc2ea3a79064
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 10:36:12 2020 +0530
+
+    react client added, tailwindcss added, react client code cleanup added
+
+commit ecef3886066d8d7f1765cbb8b500a639bac4a595
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 10:18:55 2020 +0530
+
+    chat room length should be less than or eqaul to 15
+
+commit 400ceb9d161614cba5d377f3fe6cfa749a1354b8
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 09:53:57 2020 +0530
+
+    add a unique chat room private route, controller added
+
+commit a228c1a074b41d1116ac182b66db786739da5874
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 09:32:09 2020 +0530
+
+    auth middlware added, working
+
+commit ec0cb2f7bbb52f47d302bb5d480add231919a90a
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Mon Aug 3 00:57:28 2020 +0530
+
+    validations added, user can register now
+
+commit a8156db50179cfaa0f30d3f40d16a1bc91cbc632
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Mon Aug 3 00:45:57 2020 +0530
+
+    signup and signin routes and controllers methods added
+
+commit bc510b4f1df3ca9d2af7b212cecf64f12561af98
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Mon Aug 3 00:32:43 2020 +0530
+
+    all the mongoose models schemas are added
+
+commit 56f0f386eb459e4754856b5c6381493d2b2330e2
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Mon Aug 3 00:26:01 2020 +0530
+
+    Initial commit, server dir created, server added, database added, models added
