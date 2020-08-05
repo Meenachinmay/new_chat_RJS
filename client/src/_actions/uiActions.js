@@ -1,10 +1,14 @@
-import { SHOW_ALERT } from './types';
+import { SHOW_ALERT, CLEAR_ERRORS } from './types';
 
-const showAlert = (data) => dispatch => {
+export const showAlert = (data) => dispatch => {
     dispatch({
         type: SHOW_ALERT,
         payload: data
     })
 }
 
-export default showAlert;
+export const clearErrors = () => dispatch => {
+    dispatch({
+        type: CLEAR_ERRORS
+    })
+}

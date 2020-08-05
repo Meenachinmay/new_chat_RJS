@@ -6,7 +6,7 @@ import {
     LOGOUT_USER,
     GET_ERRORS
 } from './types';
-import showAlert from './uiActions';
+import showAlert, { clearErrors } from './uiActions';
 
 export const registerUser = (dataToSubmit) => dispatch => {
     let errorData = "";
@@ -18,6 +18,7 @@ export const registerUser = (dataToSubmit) => dispatch => {
                 payload: response.data
             })
             
+            dispatch(clearErrors());
         })
         .catch(error => {
             dispatch({
@@ -25,29 +26,39 @@ export const registerUser = (dataToSubmit) => dispatch => {
                 payload: error.response.data.error
             });
             
-            errorData = {
-                message: error.response.data.error,
-                alertType: "bg-red-500"
-            }
+            // errorData = {
+            //     message: error.response.data.error,
+            //     alertType: "bg-red-500"
+            // }
 
-            dispatch(showAlert(errorData));
+            // dispatch(showAlert(errorData));
         });
 }
 
 export const loginUser = (dataToSubmit) => dispatch => {
+    let errorData = "";
+
     axios.post('http://localhost:4000/signin',dataToSubmit)
         .then(response => {
             dispatch({
                 type: LOGIN_USER,
                 payload: response.data
             })
-            
+
+            dispatch(clearErrors());
         })
         .catch(error => {
             dispatch({
                 type: GET_ERRORS,
                 payload: error.response.data.error
             })
+
+            // errorData = {
+            //     message: error.response.data.error,
+            //     alertType: "bg-red-500"
+            // }
+
+            // dispatch(showAlert(errorData));
         });
 }
 

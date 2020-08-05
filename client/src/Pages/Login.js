@@ -17,12 +17,7 @@ const Login = () => {
         }
 
         dispatch(loginUser(data));
-        setTimeout(() => {
-            console.log(errorMessage);
-        }, 1000);
     }
-
-    const errorMessage = useSelector(state => state.errors);
 
     return (
         <div className="flex-shrink-0 mx-auto w-1/5">

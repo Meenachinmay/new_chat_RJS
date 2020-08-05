@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { registerUser } from '../_actions/userActions';
 
 const Register = () => {
@@ -7,9 +7,6 @@ const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    const errorState = useSelector(state => state.errors.message);
-    const authUserEmail = useSelector(state => state.auth.user.email)
 
     const dispatch = useDispatch();
 
@@ -22,10 +19,6 @@ const Register = () => {
         }
 
         dispatch(registerUser(data));
-
-        console.log(data);
-        console.log(errorState)
-        console.log(authUserEmail)
     }
 
     return (

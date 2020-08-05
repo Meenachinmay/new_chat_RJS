@@ -7,8 +7,6 @@ import Register from './Pages/Register';
 import Chatroom from './Pages/Chatroom';
 import Dashboard from './Pages/Dashboard';
 
-import store from './store';
-
 import { useSelector } from 'react-redux';
 
 import AlertMessage from './_helperComponents/AlertMessage';
@@ -16,8 +14,8 @@ import AlertMessage from './_helperComponents/AlertMessage';
 function App() {
 
   // for showing alert message
-  const alertMessage = useSelector(state => state.ui.alertData.message);
-  const alertType = useSelector(state => state.ui.alertData.alertType);
+  const alertMessage = useSelector(state => state.errors.message);
+  const alertType = useSelector(state => state.errors.alertType);
 
   return (
     <div className="">
