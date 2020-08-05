@@ -1,11 +1,4 @@
-import { SHOW_ALERT, CLEAR_ERRORS } from './types';
-
-export const showAlert = (data) => dispatch => {
-    dispatch({
-        type: SHOW_ALERT,
-        payload: data
-    })
-}
+import { CLEAR_ERRORS } from './types';
 
 export const clearErrors = () => dispatch => {
     dispatch({
