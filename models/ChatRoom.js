@@ -5,6 +5,6 @@ const chatRoomSchema = new mongoose.Schema({
         type: String,
         required: 'Chat room name is required'
     }
-});
+}, {timestamps: true});
 
 module.exports = mongoose.model('chatroom', chatRoomSchema);

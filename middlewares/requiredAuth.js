@@ -1,12 +1,12 @@
 
 const jwt = require('jsonwebtoken');
 
-module.exports = (req, res, next) => {
-    const token = req.header('authorization');
-    if (!token) return res.status(401).json({success: false, message: "Access denied"});
+module.exports = async (req, res, next) => {
 
     try {
-        const verified = jwt.verify(token, "nihongadaisuki");
+        const token = req.header('authorization');
+        if (!token) return res.status(401).json({success: false, message: "Access denied"});
+        const verified = await jwt.verify(token, "nihongadaisuki");
         req.user = verified;
         next();
     } catch (error) {

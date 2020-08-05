@@ -20,3 +20,12 @@ exports.validateUserForLogin = (user) => {
 
     return validateUserSchema.validate(user)
 }
+
+// @METHOD to validate the incoming post request to create a new chat room
+exports.validateCreateChatRoomData = (data) => {
+    const validateChatRoomSchema = Joi.object({
+        name: Joi.string().min(3).required().alphanum()
+    })
+
+    return validateChatRoomSchema.validate(data);
+}

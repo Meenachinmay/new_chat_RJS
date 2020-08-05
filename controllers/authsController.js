@@ -16,7 +16,7 @@ exports.signUp = async (req, res) => {
 
     // Checking if the userEmail is already exist
     const existedEmail = await User.findOne({ email: req.body.email })
-    if (existedEmail) return res.status(400).json({success: false, message: "Email is already in use", email: existedEmail.email });   
+    if (existedEmail) return res.status(400).json({success: false, error: "Email is already in use", email: existedEmail.email });   
 
      // HASHING PASSWORD
      const salt = await bcrypt.genSalt(10);
@@ -30,9 +30,9 @@ exports.signUp = async (req, res) => {
 
     try {
         const savedUser = await newUser.save();
-        res.status(200).json({success: true, user: {email: savedUser.email, name: savedUser.name }});       
+        return res.status(200).json({success: true, user: {email: savedUser.email, name: savedUser.name }});       
     } catch (error) {
-        res.status(400).json({success: false, error});
+        return res.status(400).json({success: false, error});
     }
 }
 
@@ -49,12 +49,12 @@ exports.signIn = async (req, res) => {
      const user = await User.findOne({ email: req.body.email });
 
      if (!user) {
-        return res.status(400).json({success: false, message: "Email is not found in our database."});
+        return res.status(400).json({success: false, error: "Email is not found in our database."});
     } else {
         // IF PASSWORD IS CORRECT
         const passwordMatched = await bcrypt.compare(req.body.password, user.password);
         if (!passwordMatched) {
-            return res.status(400).json({success: false, message: "Password is incorrect."});
+            return res.status(400).json({success: false, error: "Password is incorrect."});
         } else {
             const token = jwt.sign({_id: user._id}, "nihongadaisuki");
             return res.header('authorization', token).status(200).json({success: true, token: token});
