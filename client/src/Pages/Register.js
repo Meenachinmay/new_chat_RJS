@@ -23,10 +23,10 @@ const Register = () => {
             <form onSubmit={handleSubmit}>
                 <div className="p-2 mt-32 rounded bg-white shadow-lg">
                     <div className="flex flex-col m-1 p-2">
-                        <p className="text-center text-2xl uppercase text-gray-500">
+                        <p className="text-center text-2xl uppercase text-gray-500 mb-5">
                             Sign Up
                         </p>
-                        <label className="text-gray-600">
+                        <label className="text-gray-600 text-sm">
                             Name:
                         </label>
                         <input 
@@ -37,7 +37,7 @@ const Register = () => {
                             required
                         />
                         {errors.name ? <p className="p-1 font-semibold text-xs text-red-500">{errors.name}</p> : null }
-                        <label className="text-gray-600 mt-3">
+                        <label className="text-gray-600 mt-3 text-sm">
                             Email:
                         </label>
                         <input 
@@ -48,7 +48,7 @@ const Register = () => {
                             required
                         />
                         {errors.email ? <p className="p-1 font-semibold text-xs text-red-500">{errors.email}</p> : null }
-                        <label className="text-gray-600 mt-3">
+                        <label className="text-gray-600 mt-3 text-sm">
                             Password:
                         </label>
                         <input 
