@@ -6,8 +6,11 @@ import {
     LOGOUT_USER,
     GET_ERRORS
 } from './types';
+import showAlert from './uiActions';
 
 export const registerUser = (dataToSubmit) => dispatch => {
+    let errorData = "";
+
     axios.post('http://localhost:4000/signup',dataToSubmit)
         .then(response => {
             dispatch({
@@ -20,7 +23,14 @@ export const registerUser = (dataToSubmit) => dispatch => {
             dispatch({
                 type: GET_ERRORS,
                 payload: error.response.data.error
-            })
+            });
+            
+            errorData = {
+                message: error.response.data.error,
+                alertType: "bg-red-500"
+            }
+
+            dispatch(showAlert(errorData));
         });
 }
 

@@ -1,3 +1,21 @@
+commit 3d69dadda08c360fb5340c98b1b663f968a82b11
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 20:56:05 2020 +0530
+
+    data from redux store is coming to the component finally
+
+commit a7a85f882cc9b1cf63ca3636aa4cf667b4313b3a
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 15:27:38 2020 +0530
+
+    create chatroom added
+
+commit c7936db26a31c5d6773e2da1783d5a23a2fb94ae
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 14:59:41 2020 +0530
+
+    form active
+
 commit 258db438ac0724b5c191785618645bf534c076be
 Author: meenachinmay <chinmayanand896@gmail.com>
 Date:   Wed Aug 5 13:35:02 2020 +0530

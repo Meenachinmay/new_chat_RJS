@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { registerUser } from '../_actions/userActions';
 
 const Register = () => {
 
-    const [errors, setErrors] = useState({name: "", email: "", password: ""});
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const errorState = useSelector(state => state.errors.message);
     const authUserEmail = useSelector(state => state.auth.user.email)
+
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
@@ -36,8 +36,6 @@ const Register = () => {
                         <p className="text-center text-2xl uppercase text-gray-500 mb-5">
                             Sign Up
                         </p>
-                        <div>{errorState}</div>
-                        <div>{authUserEmail}</div>
                         <label className="text-gray-600 text-sm">
                             Name:
                         </label>
@@ -48,7 +46,7 @@ const Register = () => {
                             onChange={(e) => setName(e.target.value)}
                             required
                         />
-                        {errors.name ? <p className="p-1 font-semibold text-xs text-red-500">{errors.name}</p> : null }
+
                         <label className="text-gray-600 mt-3 text-sm">
                             Email:
                         </label>
@@ -59,7 +57,7 @@ const Register = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
-                        {errors.email ? <p className="p-1 font-semibold text-xs text-red-500">{errors.email}</p> : null }
+                    
                         <label className="text-gray-600 mt-3 text-sm">
                             Password:
                         </label>
@@ -70,7 +68,7 @@ const Register = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
-                        {errors.password ? <p className="p-1 font-semibold text-xs text-red-500">{errors.password}</p> : null }
+                        
                     </div>
                 </div>
                 <div className="text-center mt-6">
