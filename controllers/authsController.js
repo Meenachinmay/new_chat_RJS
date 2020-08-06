@@ -30,7 +30,7 @@ exports.signUp = async (req, res) => {
 
     try {
         const savedUser = await newUser.save();
-        return res.status(200).json({success: true, email: savedUser.email});       
+        return res.status(200).json({success: true});       
     } catch (error) {
         return res.status(400).json({success: false, error});
     }
@@ -57,7 +57,7 @@ exports.signIn = async (req, res) => {
             return res.status(400).json({success: false, error: "Password is incorrect."});
         } else {
             const token = jwt.sign({_id: user._id}, "nihongadaisuki");
-            return res.header('authorization', token).status(200).json({success: true, token: token});
+            return res.header('authorization', token).status(200).json({success: true, token: token, user: { _id: user._id } });
         }
     }
 }

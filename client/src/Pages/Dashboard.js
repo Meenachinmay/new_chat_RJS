@@ -1,37 +1,50 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { createChatRoom } from '../_actions/userActions';
 
 const Dashboard = () => {
 
     const [chatroom, setChatRoom] = useState("");
+    
+    const authUser = useSelector(state => state.auth.user);
+    const dispatch = useDispatch();
 
-    const error = useSelector(state => state.errors.message)
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    const show = () => {
-        console.log(chatroom);
-        console.log(error)
-    }
+        const data = {
+            name: chatroom
+        }
 
+        dispatch(createChatRoom(data, authUser));
+    }   
 
     return (
         <div className="flex-shrink-0 mx-auto w-1/5">
             <div className="p-2 mt-32 rounded bg-white shadow-lg">
-                <div className="flex flex-col m-2 p-2">
-                    <p className="text-center text-2xl text-gray-500 mb-5">
-                        Create ChatRoom
-                    </p>
-                    <input 
-                        type="email" 
-                        className="p-2 focus:outline-none bg-gray-100 border-1 border-solid rounded hover:bg-gray-300 focus:bg-gray-300 text-gray-700" 
-                        value={chatroom}
-                        onChange={(e) => {setChatRoom(e.target.value)}}
-                        placeholder="Create new chat room..."
-                        required
-                    />
-                </div>
-                <div className="text-center mb-2">
-                    <button onClick={show} className="text-white bg-indigo-500 px-3 py-2 rounded focus:outline-none hover:bg-indigo-600">Create Chatroom</button>
-                </div>
+                <form onSubmit={handleSubmit}>
+                    <div className="flex flex-col m-2 p-2">
+                        <p className="text-center text-2xl text-gray-500 mb-5">
+                            Create ChatRoom
+                        </p>
+                        <input 
+                            type="email" 
+                            className="p-2 focus:outline-none bg-gray-100 border-1 border-solid rounded hover:bg-gray-300 focus:bg-gray-300 text-gray-700" 
+                            value={chatroom}
+                            onChange={(e) => {setChatRoom(e.target.value)}}
+                            placeholder="Create new chat room..."
+                            required
+                        />
+                    </div>
+                    <div className="text-center mb-2">
+                        <button 
+                            type="submit"  
+                            onClick={handleSubmit} 
+                            className="text-white bg-indigo-500 px-3 py-2 rounded focus:outline-none hover:bg-indigo-600">
+                                Create Chatroom
+                        </button>
+                    </div>
+                </form>
             </div>
             <div className="p-2 mt-5 rounded bg-white shadow-lg">
                 <p className="font-light text-gray-700 text-center">

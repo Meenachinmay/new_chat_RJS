@@ -2,9 +2,9 @@ import axios from 'axios';
 import {
     LOGIN_USER,
     REGISTER_USER,
-    AUTH_USER,
-    LOGOUT_USER,
-    GET_ERRORS
+    GET_ERRORS,
+    CREATE_CHATROOM,
+    LOGOUT_USER
 } from './types';
 import { clearErrors } from './uiActions';
 
@@ -33,8 +33,14 @@ export const loginUser = (dataToSubmit) => dispatch => {
         .then(response => {
             dispatch({
                 type: LOGIN_USER,
-                payload: response.data
+                payload: {
+                    token: response.data.token,
+                    authUserID: response.data.user._id
+                }
             })
+
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('authUserID', response.data.user._id);
 
             dispatch(clearErrors());
         })
@@ -44,6 +50,37 @@ export const loginUser = (dataToSubmit) => dispatch => {
                 payload: error.response.data.error
             })
         });
+}
+
+export const createChatRoom = (data, authUser) => dispatch => {
+    axios.post('http://localhost:4000/chat-rooms/create', data)
+        .then(response => {
+            dispatch({
+                type: CREATE_CHATROOM,
+                payload: {
+                    chatRoom: response.data.chatRoom,
+                    createdBy: authUser
+                }
+            })
+
+            dispatch(clearErrors());
+        })
+        .catch(error => {
+            dispatch({
+                type: GET_ERRORS,
+                payload: error.response.data.error
+            })
+        })
+}
+
+export const logoutUser = () => dispatch => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('authUserID');
+
+    dispatch({
+        type: LOGOUT_USER,
+        payload: ""
+    })
 }
 
 // export function loginUser(dataToSubmit){

@@ -1,3 +1,21 @@
+commit 9f2201f48b294cf987ee28d33d15a30d68bfd7b5
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 23:13:17 2020 +0530
+
+    done for today
+
+commit 62931a08953ec294f951b932486515d00bfc2a7a
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 23:10:22 2020 +0530
+
+    uiReducer and uiAction code cleanUP
+
+commit 6e9ad410f73061f81027037921cdda4317eed840
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 22:12:28 2020 +0530
+
+    better error showing now with custom alert message
+
 commit 3d69dadda08c360fb5340c98b1b663f968a82b11
 Author: meenachinmay <chinmayanand896@gmail.com>
 Date:   Wed Aug 5 20:56:05 2020 +0530

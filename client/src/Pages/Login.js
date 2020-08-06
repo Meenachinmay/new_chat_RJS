@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { loginUser } from '../_actions/userActions';
 
 const Login = () => {
-
-    const user = useSelector(state => state.auth);
 
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
