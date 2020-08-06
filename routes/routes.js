@@ -10,4 +10,6 @@ module.exports = (app) => {
     app.post('/signin', Authentication.signIn);
 
     app.post('/chat-rooms/create', requiredAuth, ChatRoomsController.createChatRoom);
+
+    app.get('/chatrooms', requiredAuth, ChatRoomsController.getAllChatRooms);
 }

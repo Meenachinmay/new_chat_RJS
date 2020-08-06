@@ -57,7 +57,7 @@ exports.signIn = async (req, res) => {
             return res.status(400).json({success: false, error: "Password is incorrect."});
         } else {
             const token = jwt.sign({_id: user._id}, "nihongadaisuki");
-            return res.header('authorization', token).status(200).json({success: true, token: token, user: { _id: user._id } });
+            return res.header('Authorization', token).status(200).json({success: true, token: token, user: { _id: user._id } });
         }
     }
 }

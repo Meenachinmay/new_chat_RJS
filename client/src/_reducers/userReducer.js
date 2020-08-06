@@ -1,14 +1,14 @@
 import { CREATE_CHATROOM } from '../_actions/types';
 
 const initialState = {
-    data: {}
+    chatRoomCreatedSuccess: false
 }
 
 const userReducer = (state = initialState, action) => {
     switch(action.type) {
         case CREATE_CHATROOM:
             return {
-                ...state, data: action.payload
+                ...state, chatRoomCreatedSuccess: action.payload
             }
         default:
             return state;

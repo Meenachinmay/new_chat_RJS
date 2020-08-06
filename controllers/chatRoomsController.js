@@ -24,10 +24,9 @@ exports.createChatRoom = async (req, res) => {
     })
 
     try {
-        const savedChatRoom = await newChatRoom.save();
+        await newChatRoom.save();
         return res.status(200).json({
             success: true,
-            chatRoom: savedChatRoom.name
         })
     } catch (error) {
         return res.status(400).json({
@@ -35,4 +34,16 @@ exports.createChatRoom = async (req, res) => {
             error: error
         })
     }
+}
+
+// @METHOD to get all the chatrooms
+// @ROUTE private
+exports.getAllChatRooms = async (req, res) => {
+    await ChatRoom.find({}, (error, result) => {
+        if (error){
+            return res.status(400).json({error: error })
+        } else {
+            return res.status(200).json({ chatRooms: result });
+        }
+    });
 }

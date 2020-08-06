@@ -5,3 +5,4 @@ export const LOGOUT_USER = '[logging out user] logout_user';
 export const GET_ERRORS = '[getting errors] get_errors';
 export const CLEAR_ERRORS = '[clearing errors] clear_errors';
 export const CREATE_CHATROOM = '[creating chat room] create_chatroom';
+export const GET_ALL_CHATROOMS = '[getting all chat rooms] get_all_chatrooms';

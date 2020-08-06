@@ -4,12 +4,12 @@ import {
     REGISTER_USER,
     GET_ERRORS,
     CREATE_CHATROOM,
+    GET_ALL_CHATROOMS,
     LOGOUT_USER
 } from './types';
 import { clearErrors } from './uiActions';
 
 export const registerUser = (dataToSubmit, callback) => dispatch => {
-
     axios.post('http://localhost:4000/signup',dataToSubmit)
         .then(response => {
             dispatch({
@@ -18,6 +18,7 @@ export const registerUser = (dataToSubmit, callback) => dispatch => {
             })
             
             dispatch(clearErrors());
+
             callback();
         })
         .catch(error => {
@@ -29,7 +30,6 @@ export const registerUser = (dataToSubmit, callback) => dispatch => {
 }
 
 export const loginUser = (dataToSubmit, callback) => dispatch => {
-
     axios.post('http://localhost:4000/signin',dataToSubmit)
         .then(response => {
             dispatch({
@@ -55,15 +55,12 @@ export const loginUser = (dataToSubmit, callback) => dispatch => {
         });
 }
 
-export const createChatRoom = (data, authUser) => dispatch => {
-    axios.post('http://localhost:4000/chat-rooms/create', data)
+export const createChatRoom = (data) => dispatch => {
+    axios.post('http://localhost:4000/chat-rooms/create', data, { headers: { "Authorization": localStorage.getItem('token') } })
         .then(response => {
             dispatch({
                 type: CREATE_CHATROOM,
-                payload: {
-                    chatRoom: response.data.chatRoom,
-                    createdBy: authUser
-                }
+                payload: response.data.success
             })
 
             dispatch(clearErrors());
@@ -72,6 +69,24 @@ export const createChatRoom = (data, authUser) => dispatch => {
             dispatch({
                 type: GET_ERRORS,
                 payload: error.response.data.error
+            })
+        })
+}
+
+export const getAllChatRooms = () => dispatch => {
+    axios.get('http://localhost:4000/chatrooms', { headers: {"Authorization": localStorage.getItem('token') } })
+        .then(response => {
+            dispatch({
+                type: GET_ALL_CHATROOMS,
+                payload: response.data.chatRooms
+            })
+
+            dispatch(clearErrors());
+        })
+        .catch(error => {
+            dispatch({
+                type: GET_ERRORS,
+                payload: "Error in getting chatsrooms"
             })
         })
 }
