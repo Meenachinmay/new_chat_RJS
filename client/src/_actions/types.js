@@ -6,3 +6,7 @@ export const GET_ERRORS = '[getting errors] get_errors';
 export const CLEAR_ERRORS = '[clearing errors] clear_errors';
 export const CREATE_CHATROOM = '[creating chat room] create_chatroom';
 export const GET_ALL_CHATROOMS = '[getting all chat rooms] get_all_chatrooms';
+export const SHOW_NOTIFICATION = '[showing notification] show_notification';
+export const RESET_NOTIFICATION = '[resetting notification] reset_notification';
+export const SET_LOADING = '[loading] loading';
+export const UNSET_LOADING = '[unset loding] unset_loading';

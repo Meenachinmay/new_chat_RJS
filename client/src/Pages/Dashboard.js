@@ -9,7 +9,9 @@ const Dashboard = () => {
     const [chatroom, setChatRoom] = useState("");
     const [roomsFromCache, setRoomsFromCache] = useState([]);
     const [query, setQuery] = useState("");
+    
     const dispatch = useDispatch();
+    const errors = useSelector(state => state.errors.message);
 
     let ChatRoomsList = useSelector(state => state.chat.chatRooms);
 
@@ -20,7 +22,9 @@ const Dashboard = () => {
             name: chatroom
         }
 
-        dispatch(createChatRoom(data));
+        dispatch(createChatRoom(data, errors,() => {
+            setChatRoom("");
+        }));
     }    
 
     useEffect(() => {

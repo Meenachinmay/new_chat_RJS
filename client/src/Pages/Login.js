@@ -1,25 +1,30 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../_actions/userActions';
 
-import { Link } from 'react-router-dom';
-
 import Authentication from '../_hoc/Authentication';
+
+import { Button } from 'antd';
+import { unsetLoading, setLoading } from '../_actions/uiActions';
 
 const Login = (props) => {
 
     const dispatch = useDispatch();
-    
+    const errors = useSelector(state => state.errors.message);
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const loading = useSelector(state => state.ui.loading);
 
-    const show = () => {
+    const handleSubmit = () => {
+        dispatch(setLoading());
         const data = {
             email: email,
             password: password,
         }
 
-        dispatch(loginUser(data, () => {
+        dispatch(loginUser(data,errors, () => {
+            dispatch(unsetLoading());
             props.history.push("/dashboard");
         }));
     }
@@ -55,10 +60,11 @@ const Login = (props) => {
                 </div>
             </div>
             <div className="text-center mt-6 mb-3">
-                <button onClick={show} className="text-white bg-indigo-500 px-6 py-3 rounded focus:outline-none hover:bg-indigo-600 shadow-xl">Sign In</button>
+                {/* <button onClick={handleSubmit} className="text-white bg-indigo-500 px-6 py-3 rounded focus:outline-none hover:bg-indigo-600 shadow-xl">Sign In</button> */}
+                <Button loading={loading} onClick={handleSubmit} type="primary">Sign In</Button>
             </div>
             <div className="text-center">
-                <Link to="/register" className="text-sm font-light text-center hover:bg-indigo-500 hover:text-white rounded px-1 py-2">Don't have an account, create a new one.</Link>
+                <a href="/register" className="text-sm font-light text-center hover:bg-indigo-500 hover:text-white rounded px-2 py-2">Don't have an account, create a new one.</a>
             </div>
         </div>
     )

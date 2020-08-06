@@ -1,20 +1,24 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../_actions/userActions';
 
 import Authentication from '../_hoc/Authentication';
 
-import { Link } from 'react-router-dom';
+import { Button } from 'antd';
+import { setLoading, unsetLoading } from '../_actions/uiActions';
 
 const Register = (props) => {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const loading = useSelector(state => state.ui.loading)
 
     const dispatch = useDispatch();
+    const errors = useSelector(state => state.errors.message);
 
     const handleSubmit = (e) => {
+        dispatch(setLoading());
         e.preventDefault();
         const data = {
             name: name,
@@ -22,7 +26,8 @@ const Register = (props) => {
             password: password
         }
 
-        dispatch(registerUser(data, () => {
+        dispatch(registerUser(data, errors,() => {
+            dispatch(unsetLoading());
             props.history.push("/login");
         }));
     }
@@ -71,10 +76,11 @@ const Register = (props) => {
                     </div>
                 </div>
                 <div className="text-center mt-6 mb-3">
-                    <button type="submit" className="text-white bg-indigo-500 px-6 py-3 rounded focus:outline-none hover:bg-indigo-600 shadow-xl">Sign Up</button>
+                    {/* <button type="submit" className="text-white bg-indigo-500 px-6 py-3 rounded focus:outline-none hover:bg-indigo-600 shadow-xl">Sign Up</button> */}
+                    <Button loading={loading} onClick={handleSubmit} type="primary">Sign Up</Button>
                 </div>
                 <div className="text-center">
-                    <Link to="/login" className="text-sm font-light text-center hover:bg-indigo-500 hover:text-white rounded px-1 py-2">Already have an account, Login.</Link>
+                    <a href="/login" className="text-sm font-light text-center hover:bg-indigo-500 hover:text-white rounded px-2 py-2">Already have an account, Login.</a>
                 </div>
             </form>
         </div>

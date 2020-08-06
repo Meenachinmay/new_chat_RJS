@@ -25,9 +25,14 @@ function App() {
   const alertMessage = useSelector(state => state.errors.message);
   const alertType = useSelector(state => state.errors.alertType);
 
+  // for showing notification
+  const showNotification = useSelector(state => state.ui.showNotification);
+  const notificationMessage = useSelector(state => state.ui.notificationMessage)
+
   return (
     <div className="">
         <Index />
+        {showNotification && notificationMessage ? <AlertMessage message={notificationMessage} alertType="bg-green-500" /> : null}
         {alertType && alertMessage ? <AlertMessage message={alertMessage} alertType={alertType} /> : null}
         <Switch> 
           <Route path='/dashboard' exact component={ Dashboard } />  
