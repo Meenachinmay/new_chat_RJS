@@ -4,6 +4,8 @@ import { registerUser } from '../_actions/userActions';
 
 import Authentication from '../_hoc/Authentication';
 
+import { Link } from 'react-router-dom';
+
 const Register = () => {
 
     const [name, setName] = useState("");
@@ -66,12 +68,15 @@ const Register = () => {
                         
                     </div>
                 </div>
-                <div className="text-center mt-6">
+                <div className="text-center mt-6 mb-3">
                     <button type="submit" className="text-white bg-indigo-500 px-6 py-3 rounded focus:outline-none hover:bg-indigo-600 shadow-xl">Sign Up</button>
+                </div>
+                <div className="text-center">
+                    <Link to="/login" className="text-sm font-light text-center hover:bg-indigo-500 hover:text-white rounded px-1 py-2">Already have an account, Login.</Link>
                 </div>
             </form>
         </div>
     )
 }
 
-export default Authentication(Register);
+export default Authentication(Register, true);

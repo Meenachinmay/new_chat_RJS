@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from "react-redux";
 
-export default function (SpecificComponent, customprops = {}) {
+export default function (SpecificComponent, userCanGoInside = null, customprops = {}) {
     function Authenticated(props) {
 
         let isAuthenticated = useSelector(state => state.auth.authenticated);
@@ -12,7 +12,11 @@ export default function (SpecificComponent, customprops = {}) {
             //To know my current status, send Auth request 
             //Not Loggined in Status 
             if (!isAuthenticated) {
-                props.history.push('/login')
+                if (userCanGoInside === true){
+                    props.history.push('/register')
+                }else {
+                    props.history.push('/login')
+                }
                 //Loggined in Status 
             } else {
                 //Logged in Status, but Try to go into log in page 

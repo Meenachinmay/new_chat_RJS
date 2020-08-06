@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../_actions/userActions';
 
+import { Link } from 'react-router-dom';
+
 import Authentication from '../_hoc/Authentication';
 
 const Login = () => {
@@ -49,8 +51,11 @@ const Login = () => {
                     />
                 </div>
             </div>
-            <div className="text-center mt-6">
+            <div className="text-center mt-6 mb-3">
                 <button onClick={show} className="text-white bg-indigo-500 px-6 py-3 rounded focus:outline-none hover:bg-indigo-600 shadow-xl">Sign In</button>
+            </div>
+            <div className="text-center">
+                <Link to="/register" className="text-sm font-light text-center hover:bg-indigo-500 hover:text-white rounded px-1 py-2">Don't have an account, create a new one.</Link>
             </div>
         </div>
     )
