@@ -1,0 +1,137 @@
+commit ac2a1a0781df22ba1c1a4444c3eb688c0f7a121a
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Thu Aug 6 23:13:51 2020 +0530
+
+    antd added, tailwindcss success alert added login, sign up and dashboard redux work done
+
+commit 015ebcb78e4e8e8c23b1f887d0116d5d8bdd8e62
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Thu Aug 6 16:23:19 2020 +0530
+
+    code clean up
+
+commit 4c919ecd9e4f93d9fbc67a4a3bd5aacf0a5b5f6c
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Thu Aug 6 15:06:07 2020 +0530
+
+    all the chatrooms are displaying on the dashboard
+
+commit 00e3b8da7af281b4981ce4002dd0447b8721d247
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Thu Aug 6 14:44:41 2020 +0530
+
+    chatreducer getting chatroom from api
+
+commit 65a27a2b1782706b292ae42cf0f0d616aa20f596
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Thu Aug 6 10:48:57 2020 +0530
+
+    routing callbacks added
+
+commit 18812107ef57d51a14493b9ab72b3c11bd4ed72f
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Thu Aug 6 10:28:06 2020 +0530
+
+    HOC auth route bug fixed
+
+commit 11f2c2fea3f368be7780c6646d75757113fb0e3c
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Thu Aug 6 10:09:17 2020 +0530
+
+    logout added, Auth HOC added, routes are secured now
+
+commit ad58b18cc3b2f6071d02da9a34b62f24137505aa
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Thu Aug 6 09:46:30 2020 +0530
+
+    redux state is persisiting now
+
+commit 9f2201f48b294cf987ee28d33d15a30d68bfd7b5
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 23:13:17 2020 +0530
+
+    done for today
+
+commit 62931a08953ec294f951b932486515d00bfc2a7a
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 23:10:22 2020 +0530
+
+    uiReducer and uiAction code cleanUP
+
+commit 6e9ad410f73061f81027037921cdda4317eed840
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 22:12:28 2020 +0530
+
+    better error showing now with custom alert message
+
+commit 3d69dadda08c360fb5340c98b1b663f968a82b11
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 20:56:05 2020 +0530
+
+    data from redux store is coming to the component finally
+
+commit a7a85f882cc9b1cf63ca3636aa4cf667b4313b3a
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 15:27:38 2020 +0530
+
+    create chatroom added
+
+commit c7936db26a31c5d6773e2da1783d5a23a2fb94ae
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 14:59:41 2020 +0530
+
+    form active
+
+commit 258db438ac0724b5c191785618645bf534c076be
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 13:35:02 2020 +0530
+
+    login and register page design, react router added, navbar added
+
+commit be80459e34d8bea376e4dd7b0fdefc2ea3a79064
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 10:36:12 2020 +0530
+
+    react client added, tailwindcss added, react client code cleanup added
+
+commit ecef3886066d8d7f1765cbb8b500a639bac4a595
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 10:18:55 2020 +0530
+
+    chat room length should be less than or eqaul to 15
+
+commit 400ceb9d161614cba5d377f3fe6cfa749a1354b8
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 09:53:57 2020 +0530
+
+    add a unique chat room private route, controller added
+
+commit a228c1a074b41d1116ac182b66db786739da5874
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Wed Aug 5 09:32:09 2020 +0530
+
+    auth middlware added, working
+
+commit ec0cb2f7bbb52f47d302bb5d480add231919a90a
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Mon Aug 3 00:57:28 2020 +0530
+
+    validations added, user can register now
+
+commit a8156db50179cfaa0f30d3f40d16a1bc91cbc632
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Mon Aug 3 00:45:57 2020 +0530
+
+    signup and signin routes and controllers methods added
+
+commit bc510b4f1df3ca9d2af7b212cecf64f12561af98
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Mon Aug 3 00:32:43 2020 +0530
+
+    all the mongoose models schemas are added
+
+commit 56f0f386eb459e4754856b5c6381493d2b2330e2
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Mon Aug 3 00:26:01 2020 +0530
+
+    Initial commit, server dir created, server added, database added, models added
