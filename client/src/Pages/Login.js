@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import Authentication from '../_hoc/Authentication';
 
-const Login = () => {
+const Login = (props) => {
 
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
@@ -18,7 +18,9 @@ const Login = () => {
             password: password,
         }
 
-        dispatch(loginUser(data));
+        dispatch(loginUser(data, () => {
+            props.history.push("/dashboard");
+        }));
     }
 
     return (

@@ -12,12 +12,12 @@ const initialState = {
 const authReducer = (state=initialState,action) => {
     switch(action.type){
         case REGISTER_USER:
-            return { state }
+            return { ...state, authenticated: action.payload, authUserID: action.payload }
         case LOGIN_USER:
             return { ...state, authenticated: action.payload.token, authUserID: action.payload.authUserID }
         case LOGOUT_USER:
             return {
-                state
+                ...state, authenticated: action.payload, authUserID: action.payload
             }
         // case AUTH_USER:
         //     return {...state, userData: action.payload }

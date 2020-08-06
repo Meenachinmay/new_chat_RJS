@@ -3,11 +3,17 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../_actions/userActions';
 
+import { withRouter } from 'react-router-dom';
 
-const Index = () => {
+const Index = (props) => {
 
     const dispatch = useDispatch();
     const isAuthenticated = useSelector(state => state.auth.authenticated);
+
+    const logout = () => {
+        dispatch(logoutUser());
+        props.history.push("/login");
+    }
 
     if (isAuthenticated) {
         return (
@@ -23,7 +29,7 @@ const Index = () => {
                         </Link>
                     </div>
                     <div className="flex justify-between items-center">
-                        <button onClick={() => dispatch(logoutUser())} className="px-3 mx-1 py-2 hover:font-semibold cursor-pointer hover:bg-indigo-700 rounded">
+                        <button onClick={logout} className="px-3 mx-1 py-2 hover:font-semibold cursor-pointer hover:bg-indigo-700 rounded">
                             Logout
                         </button>
                     </div>
@@ -60,4 +66,4 @@ const Index = () => {
     }
 }
 
-export default Index;
+export default withRouter(Index);

@@ -8,16 +8,17 @@ import {
 } from './types';
 import { clearErrors } from './uiActions';
 
-export const registerUser = (dataToSubmit) => dispatch => {
+export const registerUser = (dataToSubmit, callback) => dispatch => {
 
     axios.post('http://localhost:4000/signup',dataToSubmit)
         .then(response => {
             dispatch({
                 type: REGISTER_USER,
-                payload: response.data
+                payload: ""
             })
             
             dispatch(clearErrors());
+            callback();
         })
         .catch(error => {
             dispatch({
@@ -27,7 +28,7 @@ export const registerUser = (dataToSubmit) => dispatch => {
         });
 }
 
-export const loginUser = (dataToSubmit) => dispatch => {
+export const loginUser = (dataToSubmit, callback) => dispatch => {
 
     axios.post('http://localhost:4000/signin',dataToSubmit)
         .then(response => {
@@ -43,6 +44,8 @@ export const loginUser = (dataToSubmit) => dispatch => {
             localStorage.setItem('authUserID', response.data.user._id);
 
             dispatch(clearErrors());
+
+            callback();
         })
         .catch(error => {
             dispatch({
@@ -80,7 +83,7 @@ export const logoutUser = () => dispatch => {
     dispatch({
         type: LOGOUT_USER,
         payload: ""
-    })
+    });
 }
 
 // export function loginUser(dataToSubmit){

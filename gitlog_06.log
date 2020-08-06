@@ -1,3 +1,21 @@
+commit 18812107ef57d51a14493b9ab72b3c11bd4ed72f
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Thu Aug 6 10:28:06 2020 +0530
+
+    HOC auth route bug fixed
+
+commit 11f2c2fea3f368be7780c6646d75757113fb0e3c
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Thu Aug 6 10:09:17 2020 +0530
+
+    logout added, Auth HOC added, routes are secured now
+
+commit ad58b18cc3b2f6071d02da9a34b62f24137505aa
+Author: meenachinmay <chinmayanand896@gmail.com>
+Date:   Thu Aug 6 09:46:30 2020 +0530
+
+    redux state is persisiting now
+
 commit 9f2201f48b294cf987ee28d33d15a30d68bfd7b5
 Author: meenachinmay <chinmayanand896@gmail.com>
 Date:   Wed Aug 5 23:13:17 2020 +0530
