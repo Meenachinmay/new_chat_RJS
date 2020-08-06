@@ -63,6 +63,7 @@ export const createChatRoom = (data) => dispatch => {
                 payload: response.data.success
             })
 
+            dispatch(getAllChatRooms());
             dispatch(clearErrors());
         })
         .catch(error => {
