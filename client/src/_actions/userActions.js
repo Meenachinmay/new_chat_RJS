@@ -63,7 +63,9 @@ export const createChatRoom = (data) => dispatch => {
                 payload: response.data.success
             })
 
+            // getting updated chatrooms list
             dispatch(getAllChatRooms());
+
             dispatch(clearErrors());
         })
         .catch(error => {
@@ -81,7 +83,7 @@ export const getAllChatRooms = () => dispatch => {
                 type: GET_ALL_CHATROOMS,
                 payload: response.data.chatRooms
             })
-
+                         
             dispatch(clearErrors());
         })
         .catch(error => {
@@ -101,33 +103,3 @@ export const logoutUser = () => dispatch => {
         payload: ""
     });
 }
-
-// export function loginUser(dataToSubmit){
-//     const request = axios.post(`${USER_SERVER}/login`,dataToSubmit)
-//                 .then(response => response.data);
-
-//     return {
-//         type: LOGIN_USER,
-//         payload: request
-//     }
-// }
-
-// export function auth(){
-//     const request = axios.get(`${USER_SERVER}/auth`)
-//     .then(response => response.data);
-
-//     return {
-//         type: AUTH_USER,
-//         payload: request
-//     }
-// }
-
-// export function logoutUser(){
-//     const request = axios.get(`${USER_SERVER}/logout`)
-//     .then(response => response.data);
-
-//     return {
-//         type: LOGOUT_USER,
-//         payload: request
-//     }
-// }

@@ -13,6 +13,14 @@ import AlertMessage from './_helperComponents/AlertMessage';
 
 function App() {
 
+  // this will be called in every half an hour
+  // setTimeout(() => {
+  //   const rooms = JSON.parse(localStorage.getItem('chatrooms'))
+  //   if (rooms.ttl > Date.now()){
+  //     localStorage.removeItem('chatrooms');
+  //   }
+  // }, 10000);
+
   // for showing alert message
   const alertMessage = useSelector(state => state.errors.message);
   const alertType = useSelector(state => state.errors.alertType);

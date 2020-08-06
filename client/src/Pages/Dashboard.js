@@ -7,12 +7,11 @@ import Authentication from '../_hoc/Authentication';
 const Dashboard = () => {
 
     const [chatroom, setChatRoom] = useState("");
-
+    const [roomsFromCache, setRoomsFromCache] = useState([]);
     const [query, setQuery] = useState("");
-
     const dispatch = useDispatch();
 
-    const ChatRoomsList = useSelector(state => state.chat.chatRooms);
+    let ChatRoomsList = useSelector(state => state.chat.chatRooms);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,11 +21,16 @@ const Dashboard = () => {
         }
 
         dispatch(createChatRoom(data));
-    }   
+    }    
 
     useEffect(() => {
-        dispatch(getAllChatRooms())
-    },[query])
+        if (localStorage.getItem('chatrooms')){
+            const rooms = JSON.parse(localStorage.getItem('chatrooms'));
+            setRoomsFromCache(rooms);
+        } else {
+            dispatch(getAllChatRooms())
+        }
+    },[query]);
 
     return (
         <div className="flex-shrink-0 mx-auto w-1/5">
@@ -64,7 +68,7 @@ const Dashboard = () => {
                         {ChatRoomsList.map(chatroom => (
                             <li key={chatroom._id} className="mb-1 text-sm font-light tracking-normal flex justify-between items-center">
                                 {chatroom.name}
-                                <button className="bg-indigo-500 text-white p-1 rounded px-2">Join</button>
+                                <button className="bg-indigo-500 text-white p-1 rounded px-2 focus:outline-none">Join</button>
                             </li>
                         ))}
                     </ul>
