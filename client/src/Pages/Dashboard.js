@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { createChatRoom } from '../_actions/userActions';
 
+import Authentication from '../_hoc/Authentication';
+
 const Dashboard = () => {
 
     const [chatroom, setChatRoom] = useState("");
@@ -71,4 +73,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+export default Authentication(Dashboard);

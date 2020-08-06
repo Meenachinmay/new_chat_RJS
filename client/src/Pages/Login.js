@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../_actions/userActions';
 
+import Authentication from '../_hoc/Authentication';
+
 const Login = () => {
 
     const dispatch = useDispatch();
@@ -54,4 +56,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default Authentication(Login);

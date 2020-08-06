@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../_actions/userActions';
 
+import Authentication from '../_hoc/Authentication';
+
 const Register = () => {
 
     const [name, setName] = useState("");
@@ -72,4 +74,4 @@ const Register = () => {
     )
 }
 
-export default Register;
+export default Authentication(Register);
