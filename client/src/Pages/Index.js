@@ -4,6 +4,9 @@ import { logoutUser } from '../_actions/userActions';
 
 import { withRouter } from 'react-router-dom';
 
+import { LoginOutlined } from '@ant-design/icons';
+import { Tooltip } from 'antd';
+
 const Index = (props) => {
 
     const dispatch = useDispatch();
@@ -28,8 +31,12 @@ const Index = (props) => {
                         </a>
                     </div>
                     <div className="flex justify-between items-center">
-                        <button onClick={logout} className="px-3 mx-1 py-2 hover:font-semibold cursor-pointer hover:bg-indigo-700 rounded">
-                            Logout
+                        <button onClick={logout} className="cursor-pointer">
+                        <Tooltip title="Logout">
+                            <div className="flex items-center">
+                                <LoginOutlined /> <p className="ml-2 text-sm font-light">Logout</p>
+                            </div>
+                        </Tooltip>
                         </button>
                     </div>
                 </div> 

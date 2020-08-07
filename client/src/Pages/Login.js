@@ -5,6 +5,7 @@ import { loginUser } from '../_actions/userActions';
 import Authentication from '../_hoc/Authentication';
 
 import { Button } from 'antd';
+
 import { unsetLoading, setLoading } from '../_actions/uiActions';
 
 const Login = (props) => {
@@ -61,7 +62,7 @@ const Login = (props) => {
             </div>
             <div className="text-center mt-6 mb-3">
                 {/* <button onClick={handleSubmit} className="text-white bg-indigo-500 px-6 py-3 rounded focus:outline-none hover:bg-indigo-600 shadow-xl">Sign In</button> */}
-                <Button loading={loading} onClick={handleSubmit} type="primary">Sign In</Button>
+                <Button loading={loading} onClick={handleSubmit} size="large" type="primary">Sign In</Button>
             </div>
             <div className="text-center">
                 <a href="/register" className="text-sm font-light text-center hover:bg-indigo-500 hover:text-white rounded px-2 py-2">Don't have an account, create a new one.</a>
