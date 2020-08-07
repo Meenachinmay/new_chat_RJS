@@ -4,6 +4,8 @@ import { createChatRoom, getAllChatRooms } from '../_actions/userActions';
 
 import Authentication from '../_hoc/Authentication';
 
+import { Link } from 'react-router-dom';
+
 const Dashboard = () => {
 
     const [chatroom, setChatRoom] = useState("");
@@ -72,7 +74,7 @@ const Dashboard = () => {
                         {ChatRoomsList.map(chatroom => (
                             <li key={chatroom._id} className="mb-1 text-sm font-light tracking-normal flex justify-between items-center">
                                 {chatroom.name}
-                                <button className="bg-indigo-500 text-white p-1 rounded px-2 focus:outline-none">Join</button>
+                                <Link to={"/chatroom/" + chatroom._id} className="bg-indigo-500 text-white p-1 rounded px-2 focus:outline-none">Join</Link>
                             </li>
                         ))}
                     </ul>

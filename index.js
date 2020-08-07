@@ -6,15 +6,42 @@ const router = require('./routes/routes');
 
 const app = express();
 const cors = require('cors');
+const server = require('http').createServer(app);
+
+const io = require('socket.io')(server);
+
+const jwt = require('jsonwebtoken');
 
 Database.Database();
+
 app.use(express.json({extended: true}));
 
 app.use(cors());
 
 router(app);
 
+io.use( async (socket, next) => {
+    const token = socket.handshake.query.token;
+    try {
+        if (!token) return res.status(401).json({success: false, error: "Access denied"});
+        const verified = await jwt.verify(token, "nihongadaisuki");
+        socket.user = verified._id;
+        next();
+    } catch (error) {
+        res.status(400).json({success: false, error: "Invalid token"});
+    }
+})
+
+io.on('connection', (socket) => {
+    console.log('Connected' + socket.user);
+
+    socket.on('disconnect', () => {
+        console.log("Disconnected" + socket.user);
+    })
+})
+
 const port = process.env.PORT || 4000;
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Server is listening on port ${port}`)
 });
+
