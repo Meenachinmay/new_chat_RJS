@@ -2,11 +2,13 @@ import {
     LOGIN_USER,
     REGISTER_USER,
     LOGOUT_USER,
+    GET_AUTH_USER
 } from '../_actions/types';
  
 const initialState = {
     authenticated: "",
-    authUserID: ""
+    authUserID: "",
+    authUser: {}
 }
 
 const authReducer = (state=initialState,action) => {
@@ -18,6 +20,10 @@ const authReducer = (state=initialState,action) => {
         case LOGOUT_USER:
             return {
                 ...state, authenticated: action.payload, authUserID: action.payload
+            }
+        case GET_AUTH_USER:
+            return {
+                ...state, authUser: action.payload
             }
         default:
             return state;

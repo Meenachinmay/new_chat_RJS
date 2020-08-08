@@ -1,6 +1,7 @@
 const { validateCreateChatRoomData } = require('../validations/Validations');
 
 const ChatRoom = require('../models/ChatRoom');
+const Message = require('../models/Message');
 
 //@METHOD To add a new Chatroom
 //@ROUTE private
@@ -46,4 +47,17 @@ exports.getAllChatRooms = async (req, res) => {
             return res.status(200).json({ chatRooms: result });
         }
     });
+}
+
+// @METHOD to get all the messages
+exports.getMessages = async (req,res) => {
+    await Message.find({})
+        .populate('user')
+        .exec((error, document) => {
+            if (error){
+                return res.status(400).json({success: false, error: error})
+            } else {
+                return res.status(200).json({success: true, messages: document})
+            }
+        });
 }

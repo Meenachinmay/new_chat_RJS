@@ -61,3 +61,13 @@ exports.signIn = async (req, res) => {
         }
     }
 }
+
+exports.user = async (req, res) => {
+    const user = await User.findOne({_id: req.body._id});
+
+    if (!user) {
+        return res.status(400).json({success: false, error: "User is not found"});
+    } else {
+        return res.status(200).json({success: true, user: {email: user.email, name: user.name }});
+    }
+}

@@ -12,4 +12,8 @@ module.exports = (app) => {
     app.post('/chat-rooms/create', requiredAuth, ChatRoomsController.createChatRoom);
 
     app.get('/chatrooms', requiredAuth, ChatRoomsController.getAllChatRooms);
+
+    app.get('/auth-user', requiredAuth, Authentication.user);
+
+    app.get('/messages', requiredAuth, ChatRoomsController.getMessages);
 }

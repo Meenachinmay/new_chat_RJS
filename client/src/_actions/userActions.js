@@ -5,7 +5,8 @@ import {
     GET_ERRORS,
     CREATE_CHATROOM,
     GET_ALL_CHATROOMS,
-    LOGOUT_USER
+    LOGOUT_USER,
+    GET_AUTH_USER
 } from './types';
 
 import { clearErrors, showNotification, unsetLoading, resetNotification } from './uiActions';
@@ -60,6 +61,22 @@ export const loginUser = (dataToSubmit, errors,callback) => dispatch => {
             })
             dispatch(unsetLoading());
         });
+}
+
+export const getAuthUser = (data) => dispatch => {
+    axios.get('http://localhost:4000/auth-user', data, { headers: { "Authorization": localStorage.getItem('token')} })
+        .then(response => {
+            dispatch({
+                type: GET_AUTH_USER,
+                payload: response.data.user
+            })
+        })
+        .catch(error => {
+            dispatch({
+                type: GET_ERRORS,
+                payload: error.response.data.error
+            })
+        })
 }
 
 export const createChatRoom = (data, errors,callback) => dispatch => {

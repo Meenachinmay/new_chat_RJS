@@ -11,6 +11,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
 const jwt = require('jsonwebtoken');
+const Message = require('./models/Message');
 
 Database.Database();
 
@@ -36,9 +37,36 @@ router(app);
 
 io.on('connection', (socket) => {
     console.log('Connected');
-
     socket.emit('testing', "this is testing service...");
+    
+    socket.on('joinRoom', ({ chatRoomID }) => {
+        socket.join(chatRoomID);
+        console.log("a user joined " + chatRoomID);
+    })
 
+    socket.on('leaveRoom', ({ chatRoomID }) => {
+        socket.leave(chatRoomID);
+        console.log("a user left " + chatRoomID);
+    })
+    
+    socket.on('chatroomMessage', async ({ chatRoomID, userID, message}) => {
+    
+        const saveMessage = new Message({
+            chatRoom: chatRoomID,
+            user: userID,
+            message: message
+        });
+
+        io.to(chatRoomID).emit("newMessage", {
+            chatRoom: chatRoomID,
+            user: userID,
+            message: saveMessage.message
+        });
+
+        await saveMessage.save();
+    })
+    
+    
     socket.on('disconnect', () => {
         console.log("Disconnected");
     })
