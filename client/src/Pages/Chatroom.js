@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
+
 
 const Chatroom = ({ match }) => {
 
-    const chatRoomID = match.params.id;
+    const socket = io.connect('http://localhost:4000');
+    const [query, setQuery] = useState(false);
     
-    alert(chatRoomID);
-
-    const socket = io('http://localhost:4000' , {
-        query: {
-            token: localStorage.getItem('token')
-        }
-    })
+    useEffect(() => {
+        socket.on('testing', data => console.log(data));
+        
+        // eslint-disable-next-line
+    },[query]);
 
     return (
         <div>

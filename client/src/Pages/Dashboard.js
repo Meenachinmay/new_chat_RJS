@@ -36,6 +36,7 @@ const Dashboard = () => {
         } else {
             dispatch(getAllChatRooms())
         }
+        // eslint-disable-next-line
     },[query]);
 
     return (
