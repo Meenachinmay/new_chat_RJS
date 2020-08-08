@@ -11,3 +11,4 @@ export const RESET_NOTIFICATION = '[resetting notification] reset_notification';
 export const SET_LOADING = '[loading] loading';
 export const UNSET_LOADING = '[unset loding] unset_loading';
 export const CONNECT_TO_SOCKET = '[connecting to socket] socket_connection';
+export const DISCONNECT_TO_SOCKET = '[disconnecting to socket] socket_disconnect';

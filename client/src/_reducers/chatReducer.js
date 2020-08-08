@@ -1,7 +1,8 @@
-import { GET_ALL_CHATROOMS } from '../_actions/types';
+import { GET_ALL_CHATROOMS, CONNECT_TO_SOCKET, DISCONNECT_TO_SOCKET } from '../_actions/types';
 
 const initialState = {
-    chatRooms: []
+    chatRooms: [],
+    connectedToSocket: false
 }
 
 const chatReducer = (state = initialState, action) => {
@@ -9,6 +10,14 @@ const chatReducer = (state = initialState, action) => {
         case GET_ALL_CHATROOMS: 
             return {
                 ...state, chatRooms: action.payload
+            }
+        case CONNECT_TO_SOCKET:
+            return {
+                ...state, connectedToSocket: action.payload
+            }
+        case DISCONNECT_TO_SOCKET:
+            return {
+                ...state, connectedToSocket: action.payload
             }
         default:
             return {
